@@ -55,3 +55,128 @@ for (auto it = v.begin(); it != v.end(); it++) {
 }
 
 v.end() points towards the memory after the last element if we do it-- than we can have the memory of last element
+// Iterating through vector using iterator
+for (auto it = v.begin(); it != v.end(); it++) {
+    cout << *(it) << " ";
+}
+
+// Iterating through vector using range-based loop
+for (auto it : v) {
+    cout << it << " ";
+}
+
+// Erase operations
+v.erase(v.begin() + 1); // Removes second element
+v.erase(v.begin() + 2, v.begin() + 4); // Removes elements from index 2 to 3
+
+// Insert operations
+vector<int> v(2, 100); // Initializes v with {100, 100}
+v.insert(v.begin(), 300); // Inserts 300 at the beginning → {300, 100, 100}
+v.insert(v.begin() + 1, 2, 10); // Inserts two 10s at index 1 → {300, 10, 10, 100, 100}
+
+vector<int> copy(2, 50); // Initializes copy with {50, 50}
+v.insert(v.begin(), copy.begin(), copy.end()); // Inserts copy at beginning → {50, 50, 300, 10, 10, 100, 100}
+
+// Size and pop operations
+cout << v.size(); // Prints size of vector
+v.pop_back(); // Removes last element
+
+// Swap operation
+vector<int> v1 = {10, 20};
+vector<int> v2 = {30, 40};
+v1.swap(v2); // v1 becomes {30, 40}, v2 becomes {10, 20}
+
+void explainList() {
+    list<int> ls;
+
+    ls.push_back(2);       // {2}
+    ls.emplace_back(4);    // {2, 4}
+
+    ls.push_front(5);      // {5, 2, 4}
+
+    ls.emplace_front();    // {2, 4}
+
+    // rest functions same as vector
+    // begin, end, rbegin, rend, clear, insert, size, swap
+}
+
+void explainDeque() {
+    deque<int> dq;
+    dq.push_back(1);        // {1}
+    dq.emplace_back(2);     // {1, 2}
+    dq.push_front(4);       // {4, 1, 2}
+    dq.emplace_front(3);    // {3, 4, 1, 2}
+
+    dq.pop_back();          // {3, 4, 1}
+    dq.pop_front();         // {4, 1}
+
+    dq.back();              // Access last element
+    dq.front();             // Access first element
+
+    // rest functions same as vector
+    // begin, end, rbegin, rend, clear, insert, size, swap
+}
+
+void explainStack() {
+    stack<int> st;
+    st.push(1);       // {1}
+    st.push(2);       // {2, 1}
+    st.push(3);       // {3, 2, 1}
+    st.push(3);       // {3, 3, 2, 1}
+    st.emplace(5);    // {5, 3, 3, 2, 1}
+
+    cout << st.top(); // prints 5
+    st.pop();         // stack becomes {3, 3, 2, 1}
+
+    cout << st.top();   // prints 3
+    cout << st.size();  // prints 4
+    cout << st.empty(); // prints 0 (false)
+
+    stack<int> st1, st2;
+    st1.swap(st2);    // swaps contents of st1 and st2
+}
+
+void explainQueue() {
+    queue<int> q;
+    q.push(1);        // {1}
+    q.push(2);        // {1, 2}
+    q.emplace(4);     // {1, 2, 4}
+
+    q.back() += 5;    // modifies last element → {1, 2, 9}
+
+    cout << q.back();   // prints 9
+    cout << q.front();  // prints 1
+
+    q.pop();           // removes front → {2, 9}
+
+    cout << q.front();  // prints 2
+
+    // size, swap, empty — same as stack
+}
+void explainPQ() {
+    // Max-Heap (default)
+    priority_queue<int> pq;
+
+    pq.push(5);        // {5}
+    pq.push(2);        // {5, 2}
+    pq.push(8);        // {8, 5, 2}
+    pq.emplace(10);    // {10, 8, 5, 2}
+
+    cout << pq.top();  // prints 10
+
+    pq.pop();          // {8, 5, 2}
+
+    cout << pq.top();  // prints 8
+
+    // size, swap, empty functions same as other containers
+
+    // Min-Heap
+    priority_queue<int, vector<int>, greater<int>> pq;
+
+    pq.push(5);        // {5}
+    pq.push(2);        // {2, 5}
+    pq.push(8);        // {2, 5, 8}
+    pq.emplace(10);    // {2, 5, 8, 10}
+
+    cout << pq.top();  // prints 2
+}
