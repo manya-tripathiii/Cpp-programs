@@ -45,7 +45,7 @@ vector<int> removeDuplicates(vector<int> arr,int n){
     if(arr[i]!=arr[j]){
       j++;
       arr[j]=arr[i];
-    }
+    } 
   }
   // Resize the array to remove the extra elements
   arr.resize(j + 1);
