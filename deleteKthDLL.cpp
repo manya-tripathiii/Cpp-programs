@@ -59,37 +59,26 @@ Node* convertToVec(vector<int> vec){
   }
   return head;
 }*/
-Node* deleteElement(Node* head,int el){
-  Node* temp=head;
-  if(head->data==el){
-    head=head->next;
-    temp->next=nullptr;
-    head->prev=nullptr;
+Node* deleteElement(Node* temp){
+  Node* prev1=temp->prev;
+  Node* next1=temp->next;
+  if(next1==NULL){
+    prev1->next=nullptr;
+    temp->prev=nullptr;
     free(temp);
-    return head;
   }
-  while(temp!=NULL){
-    if(temp->data==el){
-      Node* prev1=temp->prev;
-      Node* next1=temp->next;
-      if(nex1->NULL){
-        prev1->next=nullptr
-      }
-      prev1->next=next1;
-      next1->prev=prev1;
-      temp->prev=nullptr;
-      temp->next==nullptr;
-      free(temp);
-    }
-  }
-  return head;
+  prev1->next=next1;
+  next1->prev=prev1;
+  temp->prev=nullptr;
+  temp->next=nullptr;
+  free(temp);
 }
 int main(){
   vector<int> vec={1,33,3,4,55,44};
   Node* head=convertToVec(vec);
   /*Node* head1=deleteKthDL(head,6);*/
-  Node* head2=deleteElement(head,33);
-  Node* temp=head2;
+  deleteElement(head->next);
+  Node* temp=head;
   while(temp!=NULL){
     cout<<temp->data<<" ";
     temp=temp->next;
