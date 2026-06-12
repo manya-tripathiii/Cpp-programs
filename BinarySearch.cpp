@@ -4,7 +4,7 @@ int BS(vector<int> arr,int key){
   int low=0;
   int high=arr.size()-1;
   while(low<=high){
-    int mid=(low+high)/2;
+    int mid=low+(high-low)/2;
     if(arr[mid]==key){
       return mid;
     }
