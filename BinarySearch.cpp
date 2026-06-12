@@ -1,9 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-int BS(vector<int> arr,int n,int key){
+int BS(vector<int> arr,int key){
   int low=0;
-  int high=n-1;
-  while(low<=hig){
+  int high=arr.size()-1;
+  while(low<=high){
     int mid=(low+high)/2;
     if(arr[mid]==key){
       return mid;
@@ -16,4 +16,12 @@ int BS(vector<int> arr,int n,int key){
     }
   }
   return -1;
+}
+
+int main(){
+  int num;
+  vector<int> vec={33,45,100,102,200,300,309};
+  num=BS(vec,309);
+  cout<<"The index on which target key is: "<< num <<endl;
+  return 0;
 }
