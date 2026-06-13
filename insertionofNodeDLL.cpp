@@ -39,13 +39,31 @@ Node* inserionBeforeTail(Node* head,int value){
   return head;  
 }
 
-Node* insertAtKthPosition(Node* head,int value){
-  
+Node* insertAtKthPosition(Node* head,int key,int value){
+  int count=1;
+  Node* temp=head;
+  Node* newNode=new Node(value);
+  if(key==1){
+    newNode->next=head;
+    head->prev=newNode;
+    return newNode;
+  }
+  while(temp!=NULL){
+    temp=temp->next;
+    count++;
+    if(count==key) break;
+  }
+  Node* prev1=temp->prev;
+  prev1->next=newNode;
+  newNode->prev=prev1;
+  newNode->next=temp;
+  temp->prev=newNode;
+  return head;
 }
 Node* convertArrToDLL(vector<int> arr){
   Node* head=new Node(arr[0]);
   Node* mover=head;
-  for(int i=0;i<arr.size();i++){
+  for(int i=1;i<arr.size();i++){
     Node* temp=new Node(arr[i]);
     mover->next=temp;
     temp->prev=mover;
@@ -56,7 +74,7 @@ Node* convertArrToDLL(vector<int> arr){
 int main(){
   vector<int> vec={33,1,5,22,1,2,3};
   Node* head=convertArrToDLL(vec);
-  Node* head1=inserionBeforeTail(head,20);
+  Node* head1=insertAtKthPosition(head,7,4);
   Node* temp=head1;
   while(temp){
     cout<<temp->data<<" ";
