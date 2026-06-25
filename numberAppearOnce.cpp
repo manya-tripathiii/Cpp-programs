@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+/*#include<bits/stdc++.h>
 using namespace std;
 int numAppearsOnce(vector<int> vec){
   int n=vec.size();
@@ -16,5 +16,22 @@ int numAppearsOnce(vector<int> vec){
 int main(){
   vector<int> ve={1,1,-1,4,4,5,5};
   int num=numAppearsOnce(ve);
+  cout<<num;
+}*/
+
+/*Optimal solution*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int OptimalFindingNum(vector<int> vec){
+  int xorr=0;
+  for(int i=0;i<vec.size();i++){
+    xorr=xorr^vec[i];
+  }
+  return xorr;
+}
+int main(){
+  vector<int> ve={1,1,2,3,3,4,4};
+  int num=OptimalFindingNum(ve);
   cout<<num;
 }
